@@ -20,25 +20,13 @@
 
     {% include 'responsive-image' with
       image: image,
-      max_width: 700,
-      max_height: 800,
+      max_width: 300,
+      max_height: 275,
       image_attributes: "data-product-featured-image",
       wrapper_class: wrapper_class,
       wrapper_attributes: "data-product-image-wrapper",
     %}
   {% endfor %}
-
-  {% if product.images.size > 1 %}
-    <ul>
-      {% for image in product.images %}
-        <li>
-          <a href="{{ image.src | img_url: '480x480' }}" data-thumbnail-id="{{ image.id }}" data-product-single-thumbnail>
-            <img class="product-single__thumbnail-image" src="{{ image.src | img_url: '160x160' }}" alt="{{ image.alt | escape }}">
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  {% endif %}
 
   <h1>{{ product.title | default: onboarding_title }}</h1>
   {% if product.vendor != blank %}
